@@ -2,10 +2,7 @@ import { Serverless } from "serverless/aws";
 
 const serverlessConfiguration: Serverless = {
   service: {
-    name: "trello",
-    // app and org for use with dashboard.serverless.com
-    // app: your-app-name,
-    // org: your-org-name,
+    name: "trekin-sample-dev",
   },
   frameworkVersion: ">=1.72.0",
   custom: {

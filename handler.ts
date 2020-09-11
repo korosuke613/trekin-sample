@@ -29,15 +29,27 @@ export const webhook: APIGatewayProxyHandler = async (event, _context) => {
     : JSON.parse(event.body).action;
 
   const trekin = new Trekin({
-    baseUrl: "",
-    cards: { id: "", token: "" },
-    defaultKintoneUserCode: "",
-    labels: { id: "", token: "" },
-    lists: { id: "", token: "" },
-    members: { id: "", token: "" },
+    baseUrl: process.env.KINTONE_API_BASE_URL,
+    defaultKintoneUserCode: process.env.DEFAULT_KINTONE_USER_ID,
+    cards: {
+      id: process.env.KINTONE_APP_ID_CARDS,
+      token: process.env.KINTONE_API_TOKEN_CARDS,
+    },
+    labels: {
+      id: process.env.KINTONE_APP_ID_LABELS,
+      token: process.env.KINTONE_API_TOKEN_LABELS,
+    },
+    lists: {
+      id: process.env.KINTONE_APP_ID_LISTS,
+      token: process.env.KINTONE_API_TOKEN_LISTS,
+    },
+    members: {
+      id: process.env.KINTONE_APP_ID_MEMBERS,
+      token: process.env.KINTONE_API_TOKEN_MEMBERS,
+    },
   });
   const result = await trekin.operationKintone(action);
-  console.info(result);
+  console.info(JSON.stringify(result));
 
   return {
     statusCode: 200,
