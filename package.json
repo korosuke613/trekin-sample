@@ -21,7 +21,7 @@
   "dependencies": {
     "@kintone/rest-api-client": "^1.5.2",
     "source-map-support": "^0.5.19",
-    "trekin": "^0.1.0"
+    "trekin": "^0.2.0"
   },
   "devDependencies": {
     "@cybozu/eslint-config": "^11.0.0",
