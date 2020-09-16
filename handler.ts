@@ -28,28 +28,36 @@ export const webhook: APIGatewayProxyHandler = async (event, _context) => {
     ? (event.body as any).action
     : JSON.parse(event.body).action;
 
-  const trekin = new Trekin({
-    baseUrl: process.env.KINTONE_API_BASE_URL,
-    defaultKintoneUserCode: process.env.DEFAULT_KINTONE_USER_ID,
-    cards: {
-      id: process.env.KINTONE_APP_ID_CARDS,
-      token: process.env.KINTONE_API_TOKEN_CARDS,
+  const trekin = new Trekin(
+    {
+      baseUrl: process.env.KINTONE_API_BASE_URL,
+      defaultKintoneUserCode: process.env.DEFAULT_KINTONE_USER_ID,
+      cards: {
+        id: process.env.KINTONE_APP_ID_CARDS,
+        token: process.env.KINTONE_API_TOKEN_CARDS,
+      },
+      labels: {
+        id: process.env.KINTONE_APP_ID_LABELS,
+        token: process.env.KINTONE_API_TOKEN_LABELS,
+      },
+      lists: {
+        id: process.env.KINTONE_APP_ID_LISTS,
+        token: process.env.KINTONE_API_TOKEN_LISTS,
+      },
+      members: {
+        id: process.env.KINTONE_APP_ID_MEMBERS,
+        token: process.env.KINTONE_API_TOKEN_MEMBERS,
+      },
     },
-    labels: {
-      id: process.env.KINTONE_APP_ID_LABELS,
-      token: process.env.KINTONE_API_TOKEN_LABELS,
-    },
-    lists: {
-      id: process.env.KINTONE_APP_ID_LISTS,
-      token: process.env.KINTONE_API_TOKEN_LISTS,
-    },
-    members: {
-      id: process.env.KINTONE_APP_ID_MEMBERS,
-      token: process.env.KINTONE_API_TOKEN_MEMBERS,
-    },
-  });
-  const result = await trekin.operationKintone(action);
-  console.info(JSON.stringify(result));
+    {
+      apiKey: process.env.TRELLO_API_KEY,
+      apiToken: process.env.TRELLO_API_TOKEN,
+    }
+  );
+  const result = await trekin.operation(action);
+  console.info("Operation\n" + JSON.stringify(result));
+  const postResult = await trekin.postOperation(action);
+  console.info("Post operation\n" + JSON.stringify(postResult));
 
   return {
     statusCode: 200,
