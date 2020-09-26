@@ -54,6 +54,14 @@ export const webhook: APIGatewayProxyHandler = async (event, _context) => {
       apiToken: process.env.TRELLO_API_TOKEN,
     }
   );
+  trekin.guardian.setting = {
+    excludes: [
+      {
+        charactersOrLess: 12,
+      },
+    ],
+  };
+
   const result = await trekin.operation(action);
   console.info("Operation\n" + JSON.stringify(result));
   const postResult = await trekin.postOperation(action);
