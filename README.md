@@ -1,4 +1,26 @@
 # trekin-sample
+
+
+## Setup
+### Install kintone apps
+#### create kintone app template(zip)
+```
+cd kintoneAppsTemplate
+./zippingTrekinAppTemplate.sh
+```
+
+`TrekinKintoneAppsTemplate.zip` is generated.
+
+#### import template
+[Creating an App by Importing a Template File](https://get.kintone.help/k/en/user/create_app/app_csv/add_app_template_file.html)
+
+![](./images/apps.png)
+
+### Generate API tokens
+WIP
+
+### Register webhook 
+
 ```
 curl -X GET --url "https://api.trello.com/1/members/me/boards/?token=$TRELLO_API_TOKEN&key=$TRELLO_API_KEY" | jq
 ```
