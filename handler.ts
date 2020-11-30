@@ -55,11 +55,14 @@ export const webhook: APIGatewayProxyHandler = async (event, _context) => {
     }
   );
   trekin.guardian.setting = {
+    prefixRecordId: "EPTRE",
     excludes: [
       {
         charactersOrLess: 12,
       },
     ],
+    isAddDoneTime: true,
+    doneListName: "Done🎉",
   };
 
   const result = await trekin.operation(action);
