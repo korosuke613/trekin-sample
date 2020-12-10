@@ -1,27 +1,23 @@
 # trekin-sample
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkorosuke613%2Ftrekin-sample.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkorosuke613%2Ftrekin-sample?ref=badge_shield)
 
-
+WIP!
 
 ## Setup
 ### Install kintone apps
-#### create kintone app template(zip)
-```
-cd kintoneAppsTemplate
-./zippingTrekinAppTemplate.sh
-```
-
-`TrekinKintoneAppsTemplate.zip` is generated.
-
-#### import template
-[Creating an App by Importing a Template File](https://get.kintone.help/k/en/user/create_app/app_csv/add_app_template_file.html)
-
-![](./images/apps.png)
-
-### Generate API tokens
 WIP
 
-### Register webhook 
+### Generate kintone API tokens
+WIP
+
+### Deploy
+Authenticate to AWS first.
+
+```shell script
+npx serverless deploy
+```
+
+### Register webhook of Trello
 
 ```
 curl -X GET --url "https://api.trello.com/1/members/me/boards/?token=$TRELLO_API_TOKEN&key=$TRELLO_API_KEY" | jq
